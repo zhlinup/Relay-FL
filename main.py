@@ -22,7 +22,6 @@ def initial():
     # simulation parameters
     setup.add_argument('--trial', type=int, default=50, help='# of Monte Carlo Trials')
     setup.add_argument('--SNR', type=float, default=100, help='-noise variance in dB')
-    # setup.add_argument('--P_0', type=float, default=0.1, help='user transmit power budget 0.1W')
     setup.add_argument('--P_r', type=float, default=0.1, help='relay transmit power budget 0.1W')
     setup.add_argument('--verbose', type=int, default=1, help=r'whether output or not')
     setup.add_argument('--seed', type=int, default=1, help='random seed (default: 1)')
@@ -40,7 +39,7 @@ def initial():
     setup.add_argument('--epochs', type=int, default=500, help="rounds of training, T")
     setup.add_argument('--iid', type=int, default=1, help="1 for iid, 0 for non-iid")
     setup.add_argument('--noniid_level', type=int, default=2, help="number of classes at each device for non-iid")
-    setup.add_argument('--V_idx', type=int, default=4, help="Variable index")
+    setup.add_argument('--V_idx', type=int, default=0, help="Variable index")
     args = setup.parse_args()
     return args
 
@@ -54,7 +53,6 @@ if __name__ == '__main__':
 
     print(setup)
 
-    # data = sio.loadmat('matlab/DATA/trial_50_K_20_N_1_PL_3_0519.mat')
     data = sio.loadmat('matlab/DATA/trial_50_K_20_N_1_PL_3_Pr.mat')
     Pr_set = [0.01, 0.1, 0.3, 0.5, 1]
     V_idx = setup.V_idx
