@@ -28,7 +28,6 @@ if __name__ == '__main__':
     nmse = np.zeros(5)
 
     a = np.load(filename, allow_pickle=1)
-    # result_CNN_set2 = a['arr_1']
 
     result_CNN_set = a['arr_1']
     result_MSE_set = a['arr_2']
@@ -38,9 +37,7 @@ if __name__ == '__main__':
     nmse2 = a['arr_4']
     nmse4 = a['arr_6']
 
-    trial2 = 30
-    # for i in range(trial):
-    for i in range(trial2):
+    for i in range(trial):
         if i == 0:
             res_CNN = copy.deepcopy(result_CNN_set[0])
         else:
@@ -48,8 +45,7 @@ if __name__ == '__main__':
                 res_CNN[item] += copy.deepcopy(result_CNN_set[i][item])
 
     for item in res_CNN.keys():
-        # res_CNN[item] = copy.deepcopy(res_CNN[item] / trial)
-        res_CNN[item] = copy.deepcopy(res_CNN[item] / trial2)
+        res_CNN[item] = copy.deepcopy(res_CNN[item] / trial)
 
     test_accuracy1 = res_CNN['accuracy_test1']
     test_accuracy2 = res_CNN['accuracy_test2']
@@ -60,7 +56,7 @@ if __name__ == '__main__':
     nmse[2] = 10 * np.log10(np.mean(nmse2[~np.isnan(nmse2)]))
     nmse[4] = 10 * np.log10(np.mean(nmse4[~np.isnan(nmse4)]))
 
-    matfile = 'matlab/training_result/cmp_time_trial_{}_K_{}_N_{}_B_{}_E_{}.mat'.format(trial2, K, N, B, E)
+    matfile = 'matlab/training_result/cmp_time_trial_{}_K_{}_N_{}_B_{}_E_{}.mat'.format(trial, K, N, B, E)
     sio.savemat(matfile, mdict={'test_accuracy1': test_accuracy1[0: 1001], 'test_accuracy2': test_accuracy2[0: 501],
                                 'test_accuracy3': test_accuracy3[0: 1001], 'test_accuracy5': test_accuracy5[0: 501]})
     matfile2 = 'matlab/training_result/cmp_time_trial_{}_K_{}_N_{}_B_{}_E_{}_NMSE.mat'.format(trial, K, N, B, E)
@@ -80,28 +76,4 @@ if __name__ == '__main__':
     plt.xlabel('Transmission Time Slot')
     plt.ylabel('Test Accuracy')
     plt.grid()
-    # plt.show()
-
-    # plt.figure()
-    # # plt.plot(np.arange(0, len(MSE_1)), MSE_1, 'r--')
-    # plt.plot(np.arange(0, 2 * len(MSE_2), 2), MSE_2, 'b-')
-    # plt.plot(np.arange(0, len(MSE_3)), MSE_3, 'g-')
-    # plt.plot(np.arange(0, 2 * len(MSE_4), 2), MSE_4, 'm--')
-    # plt.plot(np.arange(0, 2 * len(MSE_5), 2), MSE_5, 'y--')
-    # plt.legend(labels=['Proposed', 'Conventional', 'Double-Slot', 'Existing Scheme'], loc='lower right',
-    #            fontsize='x-large')
-    # plt.xlabel('Transmission Time Slot')
-    # plt.ylabel('NMSE')
-    # plt.grid()
-    #
-    # plt.figure()
-    # plt.plot(np.arange(0, 2 * len(MSE2_2), 2), MSE2_2, 'b-')
-    # plt.plot(np.arange(0, len(MSE2_3)), MSE2_3, 'g-')
-    # plt.plot(np.arange(0, 2 * len(MSE2_4), 2), MSE2_4, 'm--')
-    # plt.plot(np.arange(0, 2 * len(MSE2_5), 2), MSE2_5, 'y--')
-    # plt.legend(labels=['Proposed', 'Conventional', 'Double-Slot', 'Existing Scheme'], loc='lower right',
-    #            fontsize='x-large')
-    # plt.xlabel('Transmission Time Slot')
-    # plt.ylabel('MSE')
-    # plt.grid()
     plt.show()
