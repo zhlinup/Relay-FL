@@ -4,7 +4,6 @@ clc;
 K = 50;
 N = 64;
 
-% distv = ones(1, N) .* 150;
 f_c = 915 * 10^6;  % carrier bandwidth
 G_A = 4.11;  % antenna gain
 PL = 3;  % path loss value
@@ -55,12 +54,6 @@ for i = 1 : trial
     
     dx_U = user_r .* cos(user_theta);
     dy_U = user_r .* sin(user_theta);
-    
-%     user_theta = unifrnd(0, 2 * pi, K, 1);  
-%     user_r = sqrt(2 .* unifrnd(0, 1, K, 1) / A + r_min * r_min);
-
-%     dx_U = user_r .* cos(user_theta);
-%     dy_U = user_r .* sin(user_theta);
 
     dis_U = sqrt((dx_U - d_AP(1)).^2 + (dy_U - d_AP(2)).^2);
     dis_R = sqrt((dx_R - d_AP(1)).^2 + (dy_R - d_AP(2)).^2);
@@ -71,26 +64,19 @@ for i = 1 : trial
             dis_UR(k, n) = sqrt((dx_U(k) - dx_R(n))^2 + (dy_U(k) - dy_R(n))^2); 
         end
     end
-%     sqrt(G_A * (light ./ (4 * pi * f_c .* 150)).^PL)
+
     PL_U = G_A * (light ./ (4 * pi * f_c .* dis_U)).^PL;
     PL_R = G_A * (light ./ (4 * pi * f_c .* dis_R)).^PL;
     PL_UR = G_A * (light ./ (4 * pi * f_c .* dis_UR)).^PL;
     
     g_rayl_U = (randn(K, 1) + 1j * randn(K, 1)) / sqrt(2);    %Rayleigh fading component for K
-%     g_rayl_R = (randn(N, 1) + 1j * randn(N, 1)) / sqrt(2); 
-%     g_rayl_UR = (randn(K, N) + 1j * randn(K, N)) / sqrt(2);
     g_rayl_R = (randn(64, 1) + 1j * randn(64, 1)) / sqrt(2); 
     g_rayl_UR = (randn(K, 64) + 1j * randn(K, 64)) / sqrt(2);
     
     channel_U(:, i) = g_rayl_U .* sqrt(PL_U);
-%     channel_R(:, i) = g_rayl_R .* sqrt(PL_R);
-%     channel_UR(:, :, i) = g_rayl_UR .* sqrt(PL_UR);
     channel_R(:, i) = g_rayl_R(1 : 64 / N : 64) .* sqrt(PL_R);
     channel_UR(:, :, i) = g_rayl_UR(:, 1 : 64 / N : 64) .* sqrt(PL_UR);
 end
 
-
-% save('channel_model_trial_1000_K_100_N_100_PL_3');
-
-filename=['DATA/0525/channel_model_trial_' num2str(trial) '_K_' num2str(K)  '_N_' num2str(N) '_PL_' num2str(PL) '_0525_seed120.mat'];
+filename=['DATA/channel_model_trial_' num2str(trial) '_K_' num2str(K)  '_N_' num2str(N) '_PL_' num2str(PL) '.mat'];
 save(filename)
