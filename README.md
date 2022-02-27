@@ -12,7 +12,7 @@ The package, written on Python 3 and Matlab, reproduces the numerical results of
 
 
 ## Dependencies
-This package is written on Python 3 and Matlab. It requires the following libraries:
+This package is written on Matlab and Python 3. It requires the following libraries:
 * Matlab and CVX
 * Python >= 3.5
 * torch
@@ -33,13 +33,13 @@ This package is written on Python 3 and Matlab. It requires the following librar
     * __cell_channel_model.m__: Construct the channel model for the multi-relay case in a single-cell
     * __DATA/__: Store files (\*.mat) for channel models and optimization results in Matlab
     * __training_result/__: Store files for training results (\*.mat) to be plotted for presentation
-    * __plot_figure.m__: plot the figure with varying transmission blocks from the training results stored in folder training_result/
-    * __plot_Pr.m__: plot the figure with varying P_r from the training results stored in folder training_result/
+    * __plot_figure.m__: plot the figure with varying transmission blocks from the training results stored in training_result/
+    * __plot_Pr.m__: plot the figure with varying P_r from the training results stored in training_result/
 * __main.py__: Initialize the simulation system, training the learning model, and storing the result to store/ as a npz file
     * __initial()__: Initialize the parser function to read the user-input parameters
 * __learning_flow.py__: Read the optimization result, initial the learning model, and perform training and testing
     * __Learning_iter()__: Given learning model, compute the graidents, update the training models, and perform testing on top of train_script.py
-    * __FedAvg_grad()__: Given the aggregated global gradient and the current model, update the global model by eq.(4)
+    * __FedAvg_grad()__: Given the aggregated model changes and the current model, update the global model by eq.(5)
 * __Nets.py__: 
     * __CNNMnist()__: Specify the convolutional neural network structure used for learning
     * __MLP()__: Specify the multiple layer perceptron structure used for learning
@@ -55,6 +55,8 @@ This package is written on Python 3 and Matlab. It requires the following librar
   
 
 ## How to Use
+The main file for optimization in Matlab is **matlab/main_cmp.m**, which optimizes the variables of the proposed relay-assisted scheme and benchmark schemes.
+After runing **matlab/main_cmp.m**, the optimization results are then used for FL.
 
 The main file for FL is **main.py**. It can take the following user-input parameters by a parser (also see the function **initial()** in main.py):
 
