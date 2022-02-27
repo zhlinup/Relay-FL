@@ -56,7 +56,8 @@ This package is written on Matlab and Python 3. It requires the following librar
 
 ## How to Use
 The main file for optimization in Matlab is **matlab/main_cmp.m**, which optimizes the variables of the proposed relay-assisted scheme and benchmark schemes.
-After runing **matlab/main_cmp.m**, the optimization results are then used for FL.
+
+> After runing **matlab/main_cmp.m**, the optimization results are then used for FL.
 
 The main file for FL is **main.py**. It can take the following user-input parameters by a parser (also see the function **initial()** in main.py):
 
