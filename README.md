@@ -81,7 +81,7 @@ Run **matlab/main_cmp.m**, the obtained optimization results are then used for F
 | local_ep   | number of local epochs: E   |1   |int   |
 | local_bs   | local batch size: B, 0 for full batch  |0   |int   |
 | lr   | learning rate, lambda  |0.05  |float   |
-| low_lr   | learning rate, bar_lambda  |1e-5  |float   |
+| low_lr   | learning rate lower bound, bar_lambda  |1e-5  |float   |
 | gamma   | learning rate decrease ratio, gamma  |0.9   |float   |
 | step   | learning rate decrease step, bar_T  |50   |int   |
 | momentum   | SGD momentum, used only for multiple local updates   |0.99   |float   |
