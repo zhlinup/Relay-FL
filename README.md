@@ -22,9 +22,20 @@ This package is written on Python 3 and Matlab. It requires the following librar
 
 ## Documentations (Please also see each file for more details):
 
-* __matlab/__: Store the Fashion-MNIST dataset. When running at the first time, it automatically downloads the dataset from the Interenet.
-    * __initial()__: Initialize the parser function to read the user-input parameters
-* __main.py__: Initialize the simulation system, optimizing the variables, training the learning model, and storing the result to store/ as a npz file
+* __matlab/__: Documents for data and codes to be used in Matlab
+    * __main_cmp.m__: Initialize the simulation system, optimizing the variables
+    * __Setup_Init.m__: Specify the system parameters
+    * __AM.m__: Alternating minization algorithm proposed in the paper
+    * __Single.m__: Conventional over-the-air model aggregation scheme
+    * __Xu.m__: Existing relay-assisted scheme in Ref. [23]
+    * __single_relay_channel.m__: Construct the channel model for the single-relay case
+    * __single_relay_channel_loc.m__: Construct the channel model for the single-relay case with varying relay location
+    * __cell_channel_model.m__: Construct the channel model for the multi-relay case in a single-cell
+    * __DATA/__: Store files (\*.mat) for channel models and optimization results in Matlab
+    * __training_result/__: Store files for training results (\*.mat) to be plotted for presentation
+    * __plot_figure.m__: plot the figure with varying transmission blocks from the training results stored in folder training_result/
+    * __plot_Pr.m__: plot the figure with varying P_r from the training results stored in folder training_result/
+* __main.py__: Initialize the simulation system, training the learning model, and storing the result to store/ as a npz file
     * __initial()__: Initialize the parser function to read the user-input parameters
 * __learning_flow.py__: Read the optimization result, initial the learning model, and perform training and testing
     * __Learning_iter()__: Given learning model, compute the graidents, update the training models, and perform testing on top of train_script.py
