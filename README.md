@@ -22,7 +22,11 @@ This package is written on Matlab and Python 3. It requires the following librar
 
 ## Documentations (Please also see each file for more details):
 
+* __data/__: Store the Fashion-MNIST dataset. When running at the first time, it automatically downloads the dataset from the Interenet.
+* __store/__: Store output files (\*.npz)
 * __matlab/__: Documents for data and codes to be used in Matlab
+    * __DATA/__: Store files (\*.mat) for channel models and optimization results in Matlab
+    * __training_result/__: Store files for training results (\*.mat) to be plotted for presentation
     * __main_cmp.m__: Initialize the simulation system, optimizing the variables
     * __Setup_Init.m__: Specify the system parameters
     * __AM.m__: Alternating minization algorithm proposed in the paper
@@ -31,8 +35,6 @@ This package is written on Matlab and Python 3. It requires the following librar
     * __single_relay_channel.m__: Construct the channel model for the single-relay case
     * __single_relay_channel_loc.m__: Construct the channel model for the single-relay case with varying relay location
     * __cell_channel_model.m__: Construct the channel model for the multi-relay case in a single-cell
-    * __DATA/__: Store files (\*.mat) for channel models and optimization results in Matlab
-    * __training_result/__: Store files for training results (\*.mat) to be plotted for presentation
     * __plot_figure.m__: plot the figure with varying transmission blocks from the training results stored in training_result/
     * __plot_Pr.m__: plot the figure with varying P_r from the training results stored in training_result/
 * __main.py__: Initialize the simulation system, training the learning model, and storing the result to store/ as a npz file
@@ -50,18 +52,18 @@ This package is written on Matlab and Python 3. It requires the following librar
     * __Load_fmnist_noniid()__: Download (if needed) and load the Fashion-MNIST data, and distribute them to the local devices by following a non-iid distribution
     * __local_update()__: Given a learning model and the distributed training data, compute the local gradients/model changes
     * __test_model()__: Given a learning model, test the accuracy/loss based on certain test images
-* __data/__: Store the Fashion-MNIST dataset. When running at the first time, it automatically downloads the dataset from the Interenet.
-* __store/__: Store output files (\*.npz)
+* __plot_result.py__: plot the figure with varying transmission blocks from the output files in store/, process and store the training results in matlab/training_result/
+* __plot_Pr.py__: plot the figure with varying P_r from the output files in store/, process and store the training results in matlab/training_result/
   
 
 ## How to Use
-Use the codes for channel models in **matlab/** to obtain the channel gains.
+1. Use the codes for channel models in **matlab/** to obtain the channel coefficients.
 
-The main file for optimization in Matlab is **matlab/main_cmp.m**, which optimizes the variables of the proposed relay-assisted scheme and benchmark schemes.
+2. The main file for optimization in Matlab is **matlab/main_cmp.m**, which optimizes the variables of the proposed relay-assisted scheme and benchmark schemes.
 
-> First run **matlab/main_cmp.m**, the obtained optimization results are then used for FL.
+Run **matlab/main_cmp.m**, the obtained optimization results are then used for FL.
 
-The main file for FL is **main.py**. It can take the following user-input parameters by a parser (also see the function **initial()** in main.py):
+3. The main file for FL is **main.py**. It can take the following user-input parameters by a parser (also see the function **initial()** in main.py):
 
 | Parameter Name  | Meaning| Default Value| Type/Range |
 | ---------- | -----------|-----------|-----------|
@@ -88,7 +90,7 @@ The main file for FL is **main.py**. It can take the following user-input parame
 
 
 Here is an example for executing the scripts in a Linux terminal:
-> python -u main.py --gpu=0 --trial=50 --V_idx 0
+> python main.py --gpu=0 --trial=50 --V_idx 0
 
 
 ## Referencing
