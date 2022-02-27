@@ -28,7 +28,7 @@ This package is written on Matlab and Python 3. It requires the following librar
     * __DATA/__: Store files (\*.mat) for channel models and optimization results in Matlab
     * __training_result/__: Store files for training results (\*.mat) to be plotted for presentation
     * __main_cmp.m__: Initialize the simulation system, optimizing the variables
-    * __Setup_Init.m__: Specify the system parameters
+    * __Setup_Init.m__: Specify and initialize the system parameters
     * __AM.m__: Alternating minization algorithm proposed in the paper
     * __Single.m__: Conventional over-the-air model aggregation scheme
     * __Xu.m__: Existing relay-assisted scheme in Ref. [23]
