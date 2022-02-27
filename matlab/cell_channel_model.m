@@ -45,8 +45,6 @@ user_r_set = sqrt(2 .* unifrnd(0, 1, K, 1, trial) / A + r_min * r_min);
 dx_U = user_r_set .* cos(user_theta_set);
 dy_U = user_r_set .* sin(user_theta_set);
 
-% rng('shuffle')
-
 for i = 1 : trial
            
     user_theta = user_theta_set(:, :, 1);  
