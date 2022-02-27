@@ -46,7 +46,9 @@ This package is written on Matlab and Python 3. It requires the following librar
     * __CNNMnist()__: Specify the convolutional neural network structure used for learning
     * __MLP()__: Specify the multiple layer perceptron structure used for learning
 * __AirComp.py__:
-    * __transmission()__: Given the local gradients, perform over-the-air model aggregation; see Section II-C 
+    * __AM()__: Given the local model changes, perform relay-assisted over-the-air model aggregation; see Section II-C 
+    * __Single()__: Given the local model changes, perform conventional over-the-air model aggregation; see Section II-B
+    * __Xu()__: Given the local model changes, perform relay-assisted over-the-air model aggregation scheme proposed in Ref. [23]
 * __train_script.py__:
     * __Load_fmnist_iid()__: Download (if needed) and load the Fashion-MNIST data, and distribute them to the local devices
     * __Load_fmnist_noniid()__: Download (if needed) and load the Fashion-MNIST data, and distribute them to the local devices by following a non-iid distribution
