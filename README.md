@@ -1,7 +1,7 @@
 # Relay-FL
 This is the simulation code package for the following paper:
 
-Zehong Lin, Hang Liu, and Ying-Jun Angela Zhang, “Relay-Assisted Cooperative Federated Learning,” to appear at IEEE Transactions on Wireless Communications, 2022. [[ArXiv Version](https://arxiv.org/abs/2107.09518)]
+Zehong Lin, Hang Liu, and Ying-Jun Angela Zhang, “Relay-Assisted Cooperative Federated Learning,” to appear in IEEE Transactions on Wireless Communications, 2022. [[ArXiv Version](https://arxiv.org/abs/2107.09518)]
 
 The package, written on Python 3 and Matlab, reproduces the numerical results of the proposed algorithm in the above paper.
 
