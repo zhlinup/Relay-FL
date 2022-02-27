@@ -75,9 +75,9 @@ Run **matlab/main_cmp.m**, the obtained optimization results are then used for F
 | trial   | total number of Monte Carlo trials   |50   |int   |
 | SNR   | -noise variance in dB   |100   |float   |
 | P_r   | relay transmit power budget   |0.1   |float   |
-| verbose   | output no/importatnt/detailed messages in running the scripts   |0   |0, 1   |
+| verbose   | output no/importatnt/detailed messages in running the scripts   |1   |0, 1   |
 | seed   | random seed   |1   |int   |
-| gpu  | GPU index used for learning (if possible)   |1   |int   |
+| gpu  | GPU index used for learning (if possible)   |0   |int   |
 | local_ep   | number of local epochs, E   |1   |int   |
 | local_bs   | local batch size, B, 0 for full batch  |0   |int   |
 | lr   | learning rate, lambda  |0.05  |float   |
