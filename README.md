@@ -78,8 +78,8 @@ Run **matlab/main_cmp.m**, the obtained optimization results are then used for F
 | verbose   | output no/importatnt/detailed messages in running the scripts   |0   |0, 1   |
 | seed   | random seed   |1   |int   |
 | gpu  | GPU index used for learning (if possible)   |1   |int   |
-| local_ep   | number of local epochs: E   |1   |int   |
-| local_bs   | local batch size: B, 0 for full batch  |0   |int   |
+| local_ep   | number of local epochs, E   |1   |int   |
+| local_bs   | local batch size, B, 0 for full batch  |0   |int   |
 | lr   | learning rate, lambda  |0.05  |float   |
 | low_lr   | learning rate lower bound, bar_lambda  |1e-5  |float   |
 | gamma   | learning rate decrease ratio, gamma  |0.9   |float   |
