@@ -8,7 +8,6 @@ import scipy.io as sio
 if __name__ == '__main__':
     d = 21921
     trial = 50
-    trial2 = 28
     K = 20
     N = 1
     SNR = 100
@@ -41,7 +40,7 @@ if __name__ == '__main__':
         nmse[4, i] = 10 * np.log10(np.mean(nmse4[~np.isnan(nmse4)]))
 
         res_CNN = {}
-        for iter in range(trial2):
+        for iter in range(trial):
             if iter == 0:
                 res_CNN = copy.deepcopy(res[0])
             else:
@@ -49,7 +48,7 @@ if __name__ == '__main__':
                     res_CNN[item] += copy.deepcopy(res[iter][item])
 
         for item in res_CNN.keys():
-            res_CNN[item] = copy.deepcopy(res_CNN[item] / trial2)
+            res_CNN[item] = copy.deepcopy(res_CNN[item] / trial)
 
         test_accuracy[0, i] = res_CNN['accuracy_test1'][1000]
         test_accuracy[1, i] = res_CNN['accuracy_test2'][500]
@@ -59,10 +58,10 @@ if __name__ == '__main__':
     print(test_accuracy)
     print(training_loss)
 
-    matfile = 'matlab/training_result/cmp_Pr_trial_{}_K_{}_N_{}_B_{}_E_{}.mat'.format(trial2, K, N, B, E)
+    matfile = 'matlab/training_result/cmp_Pr_trial_{}_K_{}_N_{}_B_{}_E_{}.mat'.format(trial, K, N, B, E)
     sio.savemat(matfile, mdict={'test_accuracy': test_accuracy})
 
-    matfile2 = 'matlab/training_result/cmp_Pr_trial_{}_K_{}_N_{}_B_{}_E_{}_NMSE.mat'.format(trial2, K, N, B, E)
+    matfile2 = 'matlab/training_result/cmp_Pr_trial_{}_K_{}_N_{}_B_{}_E_{}_NMSE.mat'.format(trial, K, N, B, E)
     sio.savemat(matfile2, mdict={'nmse': nmse})
 
     plt.plot(Pr_set, test_accuracy[0], 'r-')
@@ -91,6 +90,6 @@ if __name__ == '__main__':
     # plt.ylim([0.2, 0.9])
     # plt.yticks([0.5, 0.6, 0.7, 0.8, 0.9])
     plt.xlabel('Maximum relay transmit power $P_r$')
-    plt.ylabel('Average MSE')
+    plt.ylabel('Average NMSE')
 
     plt.show()
