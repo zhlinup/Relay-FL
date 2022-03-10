@@ -1,7 +1,7 @@
 # Relay-FL
 This is the simulation code package for the following paper:
 
-Zehong Lin, Hang Liu, and Ying-Jun Angela Zhang, “Relay-Assisted Cooperative Federated Learning,” to appear in IEEE Transactions on Wireless Communications, 2022. [[ArXiv Version](https://arxiv.org/abs/2107.09518)]
+Zehong Lin, Hang Liu, and Ying-Jun Angela Zhang, “Relay-Assisted Cooperative Federated Learning,” IEEE Transactions on Wireless Communications, DOI: 10.1109/TWC.2022.3155596. [[ArXiv Version](https://arxiv.org/abs/2107.09518)]
 
 The package, written on Python 3 and Matlab, reproduces the numerical results of the proposed algorithm in the above paper.
 
@@ -10,6 +10,9 @@ The package, written on Python 3 and Matlab, reproduces the numerical results of
 
 > Federated learning (FL) has recently emerged as a promising technology to enable artificial intelligence (AI) at the network edge, where distributed mobile devices collaboratively train a shared AI model under the coordination of an edge server. To significantly improve the communication efficiency of FL, over-the-air computation allows a large number of mobile devices to concurrently upload their local models by exploiting the superposition property of wireless multi-access channels. Due to wireless channel fading, the model aggregation error at the edge server is dominated by the weakest channel among all devices, causing severe straggler issues. In this paper, we propose a relay-assisted cooperative FL scheme to effectively address the straggler issue. In particular, we deploy multiple half-duplex relays to cooperatively assist the devices in uploading the local model updates to the edge server. The nature of the over-the-air computation poses system objectives and constraints that are distinct from those in traditional relay communication systems. Moreover, the strong coupling between the design variables renders the optimization of such a system challenging. To tackle the issue, we propose an alternating-optimization-based algorithm to optimize the transceiver and relay operation with low complexity. Then, we analyze the model aggregation error in a single-relay case and show that our relay-assisted scheme achieves a smaller error than the one without relays provided that the relay transmit power and the relay channel gains are sufficiently large. The analysis provides critical insights on relay deployment in the implementation of cooperative FL. Extensive numerical results show that our design achieves faster convergence compared with state-of-the-art schemes.
 
+## Referencing
+
+If you in any way use this code for research that results in publications, please cite our original article listed above.
 
 ## Dependencies
 This package is written on Matlab and Python 3. It requires the following libraries:
@@ -93,8 +96,3 @@ Run **matlab/main_cmp.m**, the obtained optimization results are then used for F
 
 Here is an example for executing the scripts in a Linux terminal:
 > python main.py --gpu=0 --trial=50 --V_idx 0
-
-
-## Referencing
-
-If you in any way use this code for research that results in publications, please cite our original article listed above.
